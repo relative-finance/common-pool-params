@@ -5,16 +5,16 @@ with open("params.json") as file:
 
 def lambda_handler(event, context):
 
-    response = {
+    response = json.dumps({
         "statusCode": 200,
         "headers": {
             "Content-Type": "application/json"
         },
-        "body": json.dumps({
+        "body": {
             "MinShareLP": params["MinShareLP"],
             "MarketActive": params["MarketActive"]
-        })
-    }
+        }
+    })
 
     return response
 
