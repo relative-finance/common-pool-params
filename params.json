@@ -4,5 +4,10 @@
                 "0x6f97cb63075769246fdb6c324f83830d37248fb7": 0.15,
                 "0x73b6aeb9bad50d7bd841fa86015f6548a387aaed": 0.15
             },
-  "MarketActive": {}
+  "MarketActive": {
+                "0x0000000000000000000000000000000000000000": true,
+                "0x6f97cb63075769246fdb6c324f83830d37248fb7": true,
+                "0x73b6aeb9bad50d7bd841fa86015f6548a387aaed": true
+            }
+
 }
