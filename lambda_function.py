@@ -11,8 +11,10 @@ def lambda_handler(event, context):
             "Content-Type": "application/json"
         },
         "body": {
-            "MinShareLP": params["MinShareLP"],
-            "MarketActive": params["MarketActive"]
+            "factorTurnover": params["factorTurnover"],
+            "factorAPR": params["factorAPR"],
+            "minShareLP": params["minShareLP"],
+            "marketActive": params["marketActive"]
         }
     })
 
