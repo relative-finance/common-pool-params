@@ -2,9 +2,9 @@
   "factorTurnover": 1.00,
   "factorAPR": 4.00,
   "minShareLP": {
-                "0x000000000000000000000000ffffffffffffffff": 0.30,
-                "0x6f97cb63075769246fdb6c324f83830d37248fb7": 0.15,
-                "0x73b6aeb9bad50d7bd841fa86015f6548a387aaed": 0.15
+                "0x000000000000000000000000ffffffffffffffff": true,
+                "0x6f97cb63075769246fdb6c324f83830d37248fb7": true,
+                "0x73b6aeb9bad50d7bd841fa86015f6548a387aaed": true
             },
   "marketActive": {
                 "0x0000000000000000000000000000000000000000": true,
