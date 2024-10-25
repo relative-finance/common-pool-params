@@ -1,15 +1,23 @@
 {
-  "factorTurnover": 1.00,
-  "factorAPR": 4.00,
-  "minShareLP": {
-                "0x000000000000000000000000ffffffffffffffff": true,
-                "0x6f97cb63075769246fdb6c324f83830d37248fb7": true,
-                "0x73b6aeb9bad50d7bd841fa86015f6548a387aaed": true
-            },
-  "marketActive": {
-                "0x0000000000000000000000000000000000000000": true,
-                "0x6f97cb63075769246fdb6c324f83830d37248fb7": true,
-                "0x73b6aeb9bad50d7bd841fa86015f6548a387aaed": true
-            }
-
+    "factorTurnover": 1.0,
+    "factorAPR": 4.0,
+    "tickerMap": {
+        "WBTC/USD [WETH-USDC]": "0x62170af269e9acd09a89279c0485e89aa42857a3",
+        "ETH/BTC [WETH-USDC]": "0x79302b73acf3ec1c18433ef6e04f814c1cdc408f",
+        "SOL/USD [WETH-USDC]": "0x822eecbf89f2431d50bb540980cb98f01a5a4eea",
+        "WETH/USD [WETH-USDC]": "0x8efa54951bf70d9775dfe8f9364df83ad1e1a8cf"
+    },
+    "minShareLP": {
+        "0x62170af269e9acd09a89279c0485e89aa42857a3": true,
+        "0x79302b73acf3ec1c18433ef6e04f814c1cdc408f": true,
+        "0x822eecbf89f2431d50bb540980cb98f01a5a4eea": true,
+        "0x8efa54951bf70d9775dfe8f9364df83ad1e1a8cf": true
+    },
+    "marketActive": {
+        "0x62170af269e9acd09a89279c0485e89aa42857a3": true,
+        "0x79302b73acf3ec1c18433ef6e04f814c1cdc408f": true,
+        "0x822eecbf89f2431d50bb540980cb98f01a5a4eea": true,
+        "0x8efa54951bf70d9775dfe8f9364df83ad1e1a8cf": true
+    }
 }
+

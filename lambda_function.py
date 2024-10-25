@@ -13,6 +13,7 @@ def lambda_handler(event, context):
         "body": {
             "factorTurnover": params["factorTurnover"],
             "factorAPR": params["factorAPR"],
+            "tickerMap": params["tickerMap"],
             "minShareLP": params["minShareLP"],
             "marketActive": params["marketActive"]
         }
