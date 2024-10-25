@@ -4,7 +4,6 @@ with open("params.json") as file:
     params = json.load(file)
 
 def lambda_handler(event, context):
-
     response = json.dumps({
         "statusCode": 200,
         "headers": {
@@ -18,7 +17,6 @@ def lambda_handler(event, context):
             "marketActive": params["marketActive"]
         }
     })
-
     return response
 
 print(lambda_handler(0,0))

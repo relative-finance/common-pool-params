@@ -1,0 +1,235 @@
+{
+  "/home/knot/Desktop/repos/common-pool-params": {
+    "versionSfCore": null,
+    "versionFramework": "4.4.7",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeResolverProviders": {
+      "default-aws-credential-resolver": "<REDACTED>"
+    },
+    "composeServiceName": null,
+    "servicePath": "/home/knot/Desktop/repos/common-pool-params",
+    "serviceConfigFileName": "serverless.yaml",
+    "service": {
+      "org": "rfxquant",
+      "app": "common-pool-params",
+      "service": "common-pool-params",
+      "provider": {
+        "name": "aws",
+        "runtime": "python3.12",
+        "stage": "dev",
+        "region": "us-east-1",
+        "versionFunctions": true,
+        "compiledCloudFormationTemplate": {
+          "AWSTemplateFormatVersion": "2010-09-09",
+          "Description": "The AWS CloudFormation template for this Serverless application",
+          "Resources": {
+            "ParamsLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/common-pool-params-dev-params"
+              }
+            },
+            "IamRoleLambdaExecution": {
+              "Type": "AWS::IAM::Role",
+              "Properties": {
+                "AssumeRolePolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Principal": {
+                        "Service": [
+                          "lambda.amazonaws.com"
+                        ]
+                      },
+                      "Action": [
+                        "sts:AssumeRole"
+                      ]
+                    }
+                  ]
+                },
+                "Policies": [
+                  {
+                    "PolicyName": {
+                      "Fn::Join": [
+                        "-",
+                        [
+                          "common-pool-params",
+                          "dev",
+                          "lambda"
+                        ]
+                      ]
+                    },
+                    "PolicyDocument": {
+                      "Version": "2012-10-17",
+                      "Statement": [
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "logs:CreateLogStream",
+                            "logs:CreateLogGroup",
+                            "logs:TagResource"
+                          ],
+                          "Resource": [
+                            {
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/common-pool-params-dev*:*"
+                            }
+                          ]
+                        },
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "logs:PutLogEvents"
+                          ],
+                          "Resource": [
+                            {
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/common-pool-params-dev*:*:*"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "Path": "/",
+                "RoleName": {
+                  "Fn::Join": [
+                    "-",
+                    [
+                      "common-pool-params",
+                      "dev",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      "lambdaRole"
+                    ]
+                  ]
+                }
+              }
+            },
+            "ParamsLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-us-east-1-100dbf1d-25af",
+                  "S3Key": "serverless/common-pool-params/dev/1729835383033-2024-10-25T05:49:43.033Z/common-pool-params.zip"
+                },
+                "Handler": "lambda_function.lambda_handler",
+                "Runtime": "python3.12",
+                "FunctionName": "common-pool-params-dev-params",
+                "MemorySize": 1024,
+                "Timeout": 6,
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                }
+              },
+              "DependsOn": [
+                "ParamsLogGroup"
+              ]
+            },
+            "ParamsLambdaVersionvgVNk0OBYcNkAadN64NtT2oZ3V95rCMzBdY0cFVHU8": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "ParamsLambdaFunction"
+                },
+                "CodeSha256": "s6HIxUEjJu9BTIF7JOAuWuTX4E7YbUM7LZEx9Dv4MYs="
+              }
+            }
+          },
+          "Outputs": {
+            "ServerlessDeploymentBucketName": {
+              "Value": "serverless-framework-deployments-us-east-1-100dbf1d-25af",
+              "Export": {
+                "Name": "sls-common-pool-params-dev-ServerlessDeploymentBucketName"
+              }
+            },
+            "ParamsLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "ParamsLambdaVersionvgVNk0OBYcNkAadN64NtT2oZ3V95rCMzBdY0cFVHU8"
+              },
+              "Export": {
+                "Name": "sls-common-pool-params-dev-ParamsLambdaFunctionQualifiedArn"
+              }
+            }
+          }
+        },
+        "vpc": {}
+      },
+      "functions": {
+        "params": {
+          "handler": "lambda_function.lambda_handler",
+          "events": [],
+          "name": "common-pool-params-dev-params",
+          "package": {},
+          "memory": 1024,
+          "timeout": 6,
+          "runtime": "python3.12",
+          "vpc": {},
+          "versionLogicalId": "ParamsLambdaVersionvgVNk0OBYcNkAadN64NtT2oZ3V95rCMzBdY0cFVHU8"
+        }
+      }
+    },
+    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: rfxquant\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: common-pool-params\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: common-pool-params\n\nprovider:\n  name: aws\n  runtime: python3.12\n\nfunctions:\n  params:\n    handler: lambda_function.lambda_handler\n",
+    "command": [
+      "deploy"
+    ],
+    "options": {},
+    "error": null,
+    "params": {},
+    "machineId": "6fa84752c65c000544c89e9040e45ec3",
+    "stage": "dev",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "dec1d6f5-5ce0-48d5-aa5d-9ff75ef4eefb",
+    "orgName": "rfxquant",
+    "userId": "82W5G99YwJZy1V1FJB",
+    "dashboard": {
+      "isEnabledForService": true,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": {
+        "providers": false,
+        "monitoring": false
+      },
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": "VvHfFYmmgpc3k0QCCw",
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "rfxquant",
+    "subscription": null,
+    "userEmail": "knotquant@protonmail.com",
+    "serviceProviderAwsRegion": "us-east-1",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "092071942693",
+    "projectType": "traditional",
+    "versionSf": "4.4.7",
+    "serviceProviderAwsCfStackName": "common-pool-params-dev",
+    "integrations": {},
+    "serviceUniqueId": "arn:aws:cloudformation:us-east-1:092071942693:stack/common-pool-params-dev/3aa212d0-9294-11ef-8e3e-0ef2f811835b",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:092071942693:stack/common-pool-params-dev/3aa212d0-9294-11ef-8e3e-0ef2f811835b",
+    "serviceProviderAwsCfStackCreated": "2024-10-25T05:44:40.946Z",
+    "serviceProviderAwsCfStackUpdated": "2024-10-25T05:49:55.572Z",
+    "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "ParamsLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:us-east-1:092071942693:function:common-pool-params-dev-params:2",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-common-pool-params-dev-ParamsLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "serverless-framework-deployments-us-east-1-100dbf1d-25af",
+        "ExportName": "sls-common-pool-params-dev-ServerlessDeploymentBucketName"
+      }
+    ]
+  }
+}
