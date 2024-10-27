@@ -1,6 +1,8 @@
 {
     "factorTurnover": 1.0,
     "factorAPR": 4.0,
+    "minTradeValueBp": 0.01,
+    "swapSlipPct": 0.03,
     "tickerMap": {
         "WBTC/USD [WETH-USDC]": "0x62170af269e9acd09a89279c0485e89aa42857a3",
         "ETH/BTC [WETH-USDC]": "0x79302b73acf3ec1c18433ef6e04f814c1cdc408f",
